@@ -1,0 +1,23 @@
+<p> {{ todoListStatus }}</p>
+<div class="input-group">
+<input #todo type="text" class="form-control" name="AddTodo" (keydown)="onKeyPress($event)" placeholder="Add a new todo">
+<span class="input-group-btn">
+	<button class="btn btn-primary" (click)="onAddingTodo()">Add</button>
+	<button class="btn btn-primary" (click)="onGet()">GetTodos</button>
+</span>
+
+</div>
+
+
+
+
+<ul class="list-group">
+	<li *ngFor="let val of list" class="list-group-item">
+			<div class="row">
+				<div class="col-sm-10" contenteditable="true" [ngStyle]="{border: none}">{{ val }}</div>
+				<!-- <div class="col-sm-1 glyphicon glyphicon-pencil" (click)="onEdit($event)"></div> -->
+				<div class="col-sm-2 glyphicon glyphicon-trash" (click)="onDelete($event)"></div>
+			</div>
+			
+	</li>
+</ul>
