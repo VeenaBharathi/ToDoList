@@ -45,9 +45,14 @@ getToken() {
 	
 	return firebase.auth().currentUser.getIdToken()
 	.then(
-		(token: string) => this.token = token
+		(token: string) => {
+			this.token = token
+			//console.log("-----" + this.token);
+			return this.token;
+			}
 	);
-	return this.token;
+
+	
 }
 
 isAuthenticated() {
