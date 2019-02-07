@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import { ServerService } from 'src/app/server.service';
+import { AuthService } from 'src/app/auth/auth.service'
 
 @Component({
 	selector:'app-server',
@@ -10,7 +11,7 @@ export class ServerComponent {
 	todoListStatus = "List is empty!";
 	list=[];
 
-constructor(private serverService: ServerService) {}
+constructor(private serverService: ServerService, authService: AuthService) {}
 
 
 @ViewChild('todo') todo:ElementRef ; 
@@ -83,4 +84,12 @@ constructor(private serverService: ServerService) {}
 					(error) => console.log(error)
 			);	
 	}
+
+
+
+	onLogout() {
+
+	this.authService.logout();
+	}
+
 }

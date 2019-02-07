@@ -22,7 +22,7 @@ signinUser (email: string, password: string) {
 							(token: string) => {
 							this.token = token;
 							console.log(this.token);
-							Router.navigate(['/create']);
+							//Router.navigate(['/create']);
 							}
 						)
 			}
