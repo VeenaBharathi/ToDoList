@@ -43,7 +43,7 @@ signinUser (email: string, password: string) {
 
 getToken() {
 	
-	return firebase.auth().currentUser.getIdToken()
+	 return firebase.auth().currentUser.getIdToken()
 	.then(
 		(token: string) => {
 			this.token = token

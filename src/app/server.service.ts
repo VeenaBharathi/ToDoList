@@ -9,16 +9,20 @@ export class ServerService {
 				private authService: AuthService
 	)	{} 
 
+
+
 	storeTodos(todo: any[]) {
-	const token = this.authService.getToken()
+		this.authService.getToken()
 		.then(
-			response => {
-				return this.http.put('https://todo-app-7de80.firebaseio.com/data.json?auth=' + token, todo)
-				}
-		);
-	
+			(token: string) => {
+				console.log(token);
+				this.http.put('https://todo-app-7de80.firebaseio.com/data.json?auth=' + token, todo).subscribe()
+			}
+		)
 		
 	}
+
+
 
 	getTodos() {
 	const token = this.authService.getToken()

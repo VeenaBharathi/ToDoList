@@ -31,11 +31,7 @@ constructor(private serverService: ServerService,
 		}
 
        
-		this.serverService.storeTodos(this.list)
-			.subscribe(
-					(response) => console.log(response),
-					(error) => console.log(error)
-			);
+		this.serverService.storeTodos(this.list);
 
 	}
 
