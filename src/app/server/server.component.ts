@@ -11,7 +11,8 @@ export class ServerComponent {
 	todoListStatus = "List is empty!";
 	list=[];
 
-constructor(private serverService: ServerService, authService: AuthService) {}
+constructor(private serverService: ServerService, 
+			private authService: AuthService) {}
 
 
 @ViewChild('todo') todo:ElementRef ; 
