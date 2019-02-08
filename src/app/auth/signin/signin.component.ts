@@ -16,6 +16,7 @@ export class SigninComponent implements OnInit {
               private serverService: ServerService) { }
 
   ngOnInit() {
+   firebase.auth().currentUser;
   }
 
     onSignin(form: NgForm) {
