@@ -1,6 +1,6 @@
-<div class="container" *ngIf="this.authService.isAuthenticated()">
+<div *ngIf="this.authService.isAuthenticated()">
 <div class="navbar-header navbar-right" >
-		<a style="cursor: pointer;" (click)="onLogout()" >
+		<a style="cursor: pointer; font-size:2rem; padding-right: 30%" (click)="onLogout()" >
 			Logout
 		</a>
 
@@ -24,9 +24,9 @@
 <ul class="list-group">
 	<li *ngFor="let val of list" class="list-group-item">
 			<div class="row">
-				<div class="col-sm-8" contenteditable="true" [ngStyle]="{border: none}">{{ val }}</div>
-				<div class="col-sm-2 glyphicon glyphicon-pencil" (click)="onEdit($event)"></div>
-				<div class="col-sm-2 glyphicon glyphicon-trash" (click)="onDelete($event)"></div>
+				<div class="col-sm-8 col-xs-4" contenteditable="true" [ngStyle]="{border: none}">{{ val }}</div>
+				<div class="col-sm-2 col-xs-4 glyphicon glyphicon-pencil" (click)="onEdit($event)"></div>
+				<div class="col-sm-2 col-xs-4 glyphicon glyphicon-trash" (click)="onDelete($event)"></div>
 			</div>
 			
 	</li>
@@ -34,9 +34,9 @@
 </div>
 
 
-<div class="container" *ngIf="!this.authService.isAuthenticated()">
-	<h3 style="color:green">Please login to view/add todos</h3>
-
+<div style="padding:5%" *ngIf="!this.authService.isAuthenticated()">
+	<h3>Please login to view/add todos</h3>
+     <br>
 		<a routerLink="/signin" >
 			<button class="btn btn-primary btn-lg">Login</button>
 		</a>
