@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { ServerService } from 'src/app/server.service'
@@ -16,7 +15,6 @@ export class SigninComponent implements OnInit {
               private serverService: ServerService) { }
 
   ngOnInit() {
-   firebase.auth().currentUser;
   }
 
     onSignin(form: NgForm) {

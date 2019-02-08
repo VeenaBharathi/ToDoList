@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
 
+Create a new folder in your local and run git clone https://github.com/VeenaBharathi/ToDoList from the folder location to get the project files. 
+
 ## Development server
 
 Run npm install to install all the dependencies.

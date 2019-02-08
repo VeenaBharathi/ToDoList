@@ -10,7 +10,6 @@ export class AuthService {
 	constructor(private router: Router) {}
 
 	onNgInit() {
-	  var user = firebase.auth().currentUser;
 	}
 
 	signupUser (email: string, password: string) {
@@ -37,7 +36,7 @@ export class AuthService {
 				}
 			)
 			.catch(
-				error => console.log(error)
+				error => alert(error)
 			)
 	}
 
