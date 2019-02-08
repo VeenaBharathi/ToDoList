@@ -36,10 +36,10 @@ getTodos() {
 				this.http.get('https://todo-app-7de80.firebaseio.com/data.json?auth=' + token)
 				.subscribe (
 				 (data: string[] ) => {
-                      
                         this.todos = data
                         console.log ( 'Data response: ', this.todos );
-					return this.todos;
+						return this.todos;
+						//this.getList();
                     }
 					
 					)
@@ -49,17 +49,22 @@ getTodos() {
 
 	}
 
+	getList() {
+	console.log("----" + this.todos);
+		return this.todos;
+	}
 
 
-deleteTodos(lst:string[], todo: string) {
-  let idx = lst.indexof(todo);
-  console.log(idx);
-	this.authService.getToken()
-		.then(
-			(token: string) => {
-				//console.log(token);
-				this.http.delete('https://todo-app-7de80.firebaseio.com/data.json[idx]?auth=' + token, todo).subscribe()
-				}
-		)
- }
+
+//deleteTodos(lst:string[], todo: string) {
+//  let idx = lst.indexof(todo);
+  //console.log(idx);
+//	this.authService.getToken()
+//		.then(
+//			(token: string) => {
+			//console.log(token);
+//				this.http.delete('https://todo-app-7de80.firebaseio.com/data.json[idx]?auth=' + token, todo).subscribe()
+	//			}
+//		)
+ //}
 }

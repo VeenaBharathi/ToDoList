@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth.service'
+import { AuthService } from '../auth.service';
+import { ServerService } from 'src/app/server.service'
 
 @Component({
   selector: 'app-signin',
@@ -11,7 +12,8 @@ import { AuthService } from '../auth.service'
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private serverService: ServerService) { }
 
   ngOnInit() {
   }
@@ -21,6 +23,7 @@ export class SigninComponent implements OnInit {
   		const password = form.value.password;
 
   		this.authService.signinUser(email, password);
+      this.serverService.getTodos();
       
   }
 

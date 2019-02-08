@@ -15,6 +15,11 @@ constructor(private serverService: ServerService,
 			private authService: AuthService) {}
 
 
+ngOnInit() {
+	this.list = this.serverService.getList();
+  }
+
+
 @ViewChild('todo') todo:ElementRef ; 
 	onAddingTodo() {
 		let currentEle = this.todo.nativeElement;
@@ -29,9 +34,6 @@ constructor(private serverService: ServerService,
 		else {
 				 this.todoListStatus = "Add a valid value";
 		}
-
-       
-		this.serverService.storeTodos(this.list);
 
 	}
 
@@ -55,7 +57,7 @@ constructor(private serverService: ServerService,
          event.target.parentNode.parentNode.remove();
          this.list.splice(this.list.indexOf(val),1);
          console.log(this.list);
-         this.serverService.deleteTodos(this.list, val);
+       //  this.serverService.deleteTodos(this.list, val);
 		//	.subscribe(
 		//		(response) => {
 		//			console.log(response);
@@ -81,6 +83,11 @@ constructor(private serverService: ServerService,
 					(error) => console.log(error)
 			);	
 	}
+
+	onSave() {
+			this.serverService.storeTodos(this.list);
+	}
+	
 
 
 
