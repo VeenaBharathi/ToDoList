@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/auth/auth.service'
 	templateUrl: './server.component.html'
 })
 export class ServerComponent {
-	todoListStatus = "List is empty!";
+	todoListStatus = "Click Save to save todos to db";
 	list=[];
 	flag="";
 
