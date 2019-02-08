@@ -55,7 +55,7 @@ constructor(private serverService: ServerService,
          event.target.parentNode.parentNode.remove();
          this.list.splice(this.list.indexOf(val),1);
          console.log(this.list);
-       //  this.serverService.deleteTodos(val)
+         this.serverService.deleteTodos(this.list, val);
 		//	.subscribe(
 		//		(response) => {
 		//			console.log(response);
@@ -71,8 +71,8 @@ constructor(private serverService: ServerService,
 
 	onGet() {
 		this.serverService.getTodos()
-			.subscribe(
-				(response) => {
+			.then( (response: object) => {
+				console.log("&&" + response)
 				if(response!= null)
 					this.list = response;
 					else

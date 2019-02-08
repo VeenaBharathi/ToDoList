@@ -1,3 +1,4 @@
+<div class="container" *ngIf="this.authService.isAuthenticated()">
 <div class="navbar-header navbar-right" >
 		<a style="cursor: pointer;" (click)="onLogout()" >
 			Logout
@@ -30,3 +31,13 @@
 			
 	</li>
 </ul>
+</div>
+
+
+<div class="container" *ngIf="!this.authService.isAuthenticated()">
+	<h3 style="color:green">Please login to view/add todos</h3>
+
+		<a routerLink="/signin" >
+			<button class="btn btn-primary btn-lg">Login</button>
+		</a>
+</div><div>

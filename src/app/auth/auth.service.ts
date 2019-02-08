@@ -29,7 +29,7 @@ signinUser (email: string, password: string) {
 					.then(
 							(token: string) => {
 							this.token = token;
-							console.log(this.token);
+							//console.log(this.token);
 							
 							}
 						)
@@ -56,7 +56,6 @@ getToken() {
 }
 
 isAuthenticated() {
-	
 	return this.token != null;
 }
 

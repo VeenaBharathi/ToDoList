@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { AuthService } from './auth/auth.service'
+import { AuthService } from './auth/auth.service';
+
 @Injectable()
 export class ServerService {
+
+todos : string[];
 	//helps to get access to inbuilt http service methods
+	
 	constructor(private http: HttpClient,
 				private authService: AuthService
 	)	{} 
@@ -17,24 +21,45 @@ export class ServerService {
 			(token: string) => {
 				console.log(token);
 				this.http.put('https://todo-app-7de80.firebaseio.com/data.json?auth=' + token, todo).subscribe()
-			}
+				}
 		)
 		
 	}
 
 
 
-	getTodos() {
-	const token = this.authService.getToken()
+getTodos() {
+
+	return this.authService.getToken()
 		.then(
-			response => {
-					return this.http.get('https://todo-app-7de80.firebaseio.com/data.json?auth=' + token);
+			(token: string) => {
+				this.http.get('https://todo-app-7de80.firebaseio.com/data.json?auth=' + token)
+				.subscribe (
+				 (data: string[] ) => {
+                      
+                        this.todos = data
+                        console.log ( 'Data response: ', this.todos );
+					return this.todos;
+                    }
+					
+					)
+					
 				}
 		)
 
 	}
 
-//	deleteTodos(todo: string) {
-//		return this.http.delete('https://todo-app-7de80.firebaseio.com/data.json', todo);
-//	}
+
+
+deleteTodos(lst:string[], todo: string) {
+  let idx = lst.indexof(todo);
+  console.log(idx);
+	this.authService.getToken()
+		.then(
+			(token: string) => {
+				//console.log(token);
+				this.http.delete('https://todo-app-7de80.firebaseio.com/data.json[idx]?auth=' + token, todo).subscribe()
+				}
+		)
+ }
 }

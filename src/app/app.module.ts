@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
+import { CommonModule } from '@angular/common';  
+
 
 import { AppComponent } from './app.component';
 import { ServerComponent } from './server/server.component';
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    CommonModule,
+    RouterModule.forRoot(appRoutes)    
   ],
   providers: [ServerService, AuthService],
   bootstrap: [AppComponent],
