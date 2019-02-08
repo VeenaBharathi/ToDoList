@@ -19,7 +19,6 @@ todos : string[];
 		this.authService.getToken()
 		.then(
 			(token: string) => {
-				console.log(token);
 				this.http.put('https://todo-app-7de80.firebaseio.com/data.json?auth=' + token, todo).subscribe()
 				}
 		)
@@ -37,7 +36,7 @@ getTodos() {
 				.subscribe (
 				 (data: string[] ) => {
                         this.todos = data
-                        console.log ( 'Data response: ', this.todos );
+                    //    console.log ( 'Data response: ', this.todos );
 						return this.todos;
 						//this.getList();
                     }
@@ -50,7 +49,7 @@ getTodos() {
 	}
 
 	getList() {
-	console.log("----" + this.todos);
+	//console.log("----" + this.todos);
 		return this.todos;
 	}
 

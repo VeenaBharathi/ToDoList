@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/auth/auth.service'
 export class ServerComponent {
 	todoListStatus = "List is empty!";
 	list=[];
+	flag="";
 
 constructor(private serverService: ServerService, 
 			private authService: AuthService) {}
@@ -28,7 +29,19 @@ ngOnInit() {
 		if(currentEle.value != ' ') {
 			  this.todoListStatus = ""
 		      console.log( currentEle.value );
-		      this.list.push((<HTMLInputElement>currentEle).value);
+		      if(this.flag=="") {
+		      	console.log("flag1 - " + this.flag);
+		      	this.list.push((<HTMLInputElement>currentEle).value);
+		      }
+		      
+		      else
+		      	{
+		      		console.log("flag2 - " + this.flag);
+		      		let oldVal = this.flag;
+		      		console.log("**" + currentEle.value);
+		      		this.list.splice(this.list.indexOf(oldVal),1,currentEle.value);
+		      		this.flag="";
+		      	}
 		      currentEle.value = '';
 		}
 		else {
@@ -57,18 +70,16 @@ ngOnInit() {
          event.target.parentNode.parentNode.remove();
          this.list.splice(this.list.indexOf(val),1);
          console.log(this.list);
-       //  this.serverService.deleteTodos(this.list, val);
-		//	.subscribe(
-		//		(response) => {
-		//			console.log(response);
-		//		},
-		//			(error) => console.log(error)
-		//	);	
 	}
 
 
 	onEdit(event: Event) {
-		console.log((<HTMLInputElement>event.target.parentNode.firstChild).click);
+		//console.log((<HTMLInputElement>event.target.parentNode.firstChild).click());
+		let currentEle = this.todo.nativeElement;
+		currentEle.value = (<HTMLInputElement>event.target.parentNode.firstChild).textContent;
+		this.flag = currentEle.value ;
+		console.log("---" + this.flag )
+
 	}
 
 	onGet() {
